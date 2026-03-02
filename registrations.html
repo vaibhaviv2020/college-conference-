@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,50 +8,221 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-   <!-- Navigation -->
-   <nav class="navbar">
-    <div class="container">
-        <div class="nav-wrapper">
-            <div class="logo-container">
-                <img src="img/clg logo.png" alt="Bharti Vidyapeeth Logo" class="logo">
-               
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo-container">
+                    <img src="img/clg logo.png" alt="Bharti Vidyapeeth Logo" class="logo">
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cfp.html">CFP</a></li>
+                    <li><a href="sessions.html">Special Sessions</a></li>
+                    <li><a href="schedule.html">Program Schedule</a></li>
+                    <li><a href="publication.html">Publication</a></li>
+                    <li><a href="committee.html">Committees</a></li>
+                    <li><a href="speaker.html">Speakers</a></li>
+                    <li><a href="awards.html">Awards</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="venue.html">Venue</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="registrations.html" class="btn-register" target="_blank">Registration</a></li>
+                </ul>
             </div>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="cfp.html">CFP</a></li>
-                <li><a href="sessions.html">Special Sessions</a></li>
-                <li><a href="schedule.html">Program Schedule</a></li>
-                <li><a href="publication.html">Publication</a></li>
-                <li><a href="committee.html">Committees</a></li>
-                <li><a href="speaker.html">Speakers</a></li>
-                <li><a href="awards.html">Awards</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="venue.html">Venue</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="registrations.html" class="btn-register">Registration</a></li>
-            </ul>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <!-- Page Header -->
     <header class="sessions-header">
-        <h1>REGISTRATION</h1>
+        <h1>REGISTRATIONS</h1>
     </header>
 
     <!-- Main Content -->
-    <main class="sessions-main">
-        <div class="container">
-            <section class="about-sessions">
-                <h2 class="section-title">Registration Details</h2>
-                <div class="about-content">
-                    <p>Insert registration categories, fees, deadlines, and payment instructions here.</p>
+    <main class="registration-main">
+        <div class="container registration-content">
+            <p class="reg-intro">After your paper is accepted, you can begin the registration process. At least one
+                author must register for the paper to be included in the proceedings and the Technical Program. Please
+                strictly follow the registration deadline mentioned your acceptance mail.</p>
+            <ul class="reg-intro-list">
+                <li><em>Indian or SAARC Nations authors / participants can pay the registration amount in INR using
+                        Razorpay link given below.</em></li>
+                <li><em>Non-Indian Authors / participants can pay through PayPal as given below.</em></li>
+                <li><em>All the below Registration Fees are inclusive of Taxes and Bank Transfer/Platform charges (If
+                        any). In the payment link below all charges are included in the registration amount</em></li>
+            </ul>
+
+            <!-- SAARC Table Section -->
+            <div class="reg-section">
+                <div class="reg-section-header">
+                    <div>
+                        <h2>Registration Fees for SAARC Countries Authors</h2>
+                        <p class="currency-note">(Must be paid in INR)</p>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="pay-btn btn-razorpay">Pay with <img src="img/razorpay-logo.png" alt="Razorpay"
+                                onerror="this.src=''; this.alt='Razorpay'; this.style.fontWeight='bold'; this.style.fontStyle='italic'"></button>
+                        <button class="form-btn">Fill Registration Form</button>
+                    </div>
                 </div>
-            </section>
+
+                <p class="saarc-note">(SAARC Countries includes: Afghanistan, Bangladesh, Bhutan, India, Maldives,
+                    Nepal, Pakistan, and Sri Lanka)</p>
+
+                <table class="reg-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Online</th>
+                            <th>Offline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Students/Research Scholars</td>
+                            <td>INR 15000</td>
+                            <td>INR 21,500</td>
+                        </tr>
+                        <tr>
+                            <td>Faculty from Academia /Delegates from Industry</td>
+                            <td>INR 18000</td>
+                            <td>INR 22,500</td>
+                        </tr>
+                        <tr>
+                            <td>Attendee</td>
+                            <td>nil</td>
+                            <td>INR 9000</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="reg-footer-note">
+                    <p>Note:</p>
+                    <ol>
+                        <li>After standard page length of 4 page, there will be an extra page charge of USD 30 up to a
+                            maximum of 6 pages only. Please note manuscript should not increase beyond 6 pages.</li>
+                        <li>For Invited Speaker the registration fees is USD 300 for online and for offline it is USD
+                            350</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="reg-section-wrap-grey">
+            <div class="container registration-content">
+                <!-- Rest of Countries Table Section -->
+                <div class="reg-section">
+                    <div class="reg-section-header">
+                        <div>
+                            <h2>Registration Fees for Rest of the Countries Authors</h2>
+                            <p class="currency-note">(Must be Paid in USD)</p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="pay-btn btn-paypal">Pay with <img src="img/paypal-logo.png" alt="PayPal"
+                                    onerror="this.src=''; this.alt='PayPal'; this.style.fontWeight='bold'; this.style.fontStyle='italic'"></button>
+                            <button class="form-btn">Fill Registration Form</button>
+                        </div>
+                    </div>
+
+                    <table class="reg-table">
+                        <thead>
+                            <tr>
+                                <th>Delegates</th>
+                                <th>Online</th>
+                                <th>Offline</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Students/Research Scholars</td>
+                                <td>USD 200</td>
+                                <td>USD 275</td>
+                            </tr>
+                            <tr>
+                                <td>Faculty from Academia /Delegates from Industry</td>
+                                <td>USD 225</td>
+                                <td>USD 300</td>
+                            </tr>
+                            <tr>
+                                <td>Attendee</td>
+                                <td>nil</td>
+                                <td>USD 150</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="reg-footer-note">
+                        <p>Note:</p>
+                        <ol>
+                            <li>After standard page length of 4 page, there will be an extra page charge of USD 30 up to
+                                a maximum of 6 pages only. Please note manuscript should not increase beyond 6 pages.
+                            </li>
+                            <li>For Invited Speaker the registration fees is USD 300 for online and for offline it is
+                                USD 350</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="reg-includes">
+                    <h3>REGISTRATION INCLUDES:</h3>
+                    <ul>
+                        <li>The registration fee for the regular papers includes the Article Processing Charge (APC) to
+                            be paid to the Publisher for all the accepted and presented papers to publish the
+                            proceedings after the conference. Hence there will be no additional fee to be paid by the
+                            authors after the conference.</li>
+                        <li>Welcome reception, Conference Badge</li>
+                        <li>Conference Kit.</li>
+                        <li>Presentation certificate.</li>
+                        <li>Access to all technical sessions and Keynotes.</li>
+                        <li>Snacks, Tea/Coffee and Lunch.</li>
+                        <li><em>The conference is non-residential and delegates are kindly requested to make their own
+                                arrangement for accommodation.</em></li>
+                    </ul>
+                </div>
+
+                <div class="reg-important">
+                    <h3>IMPORTANT POINTS :</h3>
+                    <ul>
+                        <li>To be eligible for student registration, the presenting author should be a student.</li>
+                        <li>The above registration fees are inclusive of taxes.</li>
+                        <li>Once the paper is registered, withdrawal is not allowed under any circumstances.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container registration-content padding-bottom">
+            <p class="guidelines-note"><strong>Note:</strong> All participants and authors abide by, as per the
+                following guidelines.</p>
+
+            <div class="policy-tabs">
+                <button class="policy-tab active" data-target="refund">Refund & Cancellation</button>
+                <button class="policy-tab" data-target="payment">Payment Policy</button>
+                <button class="policy-tab" data-target="terms">Terms & Conditions</button>
+                <button class="policy-tab" data-target="privacy">Privacy Policy</button>
+                <button class="policy-tab" data-target="publication">Publication Policy</button>
+            </div>
+
+            <div class="policy-content active" id="refund">
+                <p>If you cancel your conference booking, or do not attend the conference, the conference fee will not
+                    be refunded. All Rights reserved to conference committee.</p>
+            </div>
+            <div class="policy-content" id="payment">
+                <p>Payments are securely processed via certified platforms. Detailed policy info here.</p>
+            </div>
+            <div class="policy-content" id="terms">
+                <p>Terms and conditions layout here.</p>
+            </div>
+            <div class="policy-content" id="privacy">
+                <p>Your privacy is important to us. Information stored during registration will only be used by the
+                    organizing committee.</p>
+            </div>
+            <div class="policy-content" id="publication">
+                <p>Accepted papers will be published subject to strict policies and author registration.</p>
+            </div>
         </div>
     </main>
 
@@ -78,5 +250,5 @@
 
     <script src="script.js"></script>
 </body>
-</html>
 
+</html>

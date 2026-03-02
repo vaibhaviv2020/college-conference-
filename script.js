@@ -197,4 +197,28 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
+
+    // Registration Policy Tabs
+    const policyTabs = document.querySelectorAll('.policy-tab');
+    const policyContents = document.querySelectorAll('.policy-content');
+
+    if (policyTabs.length > 0 && policyContents.length > 0) {
+        policyTabs.forEach(tab => {
+            tab.addEventListener('click', function () {
+                // Remove active class from all tabs and contents
+                policyTabs.forEach(t => t.classList.remove('active'));
+                policyContents.forEach(c => c.classList.remove('active'));
+
+                // Add active class to clicked tab
+                this.classList.add('active');
+
+                // Show corresponding content
+                const targetId = this.getAttribute('data-target');
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+            });
+        });
+    }
 });
