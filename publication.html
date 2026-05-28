@@ -21,11 +21,36 @@
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="cfp.html">Call For Paper</a></li>
+                <li class="nav-dropdown">
+                    <a href="cfp.html" class="dropdown-trigger">Call For Paper <i class="fas fa-chevron-down nav-arrow"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cfp.html#cfp">About Conference</a></li>
+                        <li><a href="cfp.html#review-process">Peer Review Process</a></li>
+                        <li><a href="cfp.html#tracks">Conference Tracks</a></li>
+                        <li><a href="cfp.html#important-dates">Important Dates</a></li>
+                        <li><a href="cfp.html#submission">Submission Guidelines</a></li>
+                    </ul>
+                </li>
                 <li><a href="sessions.html">Special Sessions</a></li>
                 <li><a href="schedule.html">Program Schedule</a></li>
                 <li><a href="publication.html">Publication</a></li>
-                <li><a href="committee.html">Committees</a></li>
+                <li class="nav-dropdown">
+                    <a href="committee.html" class="dropdown-trigger">Committees <i class="fas fa-chevron-down nav-arrow"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="committee.html#chief-patron">Chief Patron</a></li>
+                        <li><a href="committee.html#organizing-committee">Organizing Committee</a></li>
+                        <li class="nav-sub-dropdown">
+                            <a href="committee.html#advisory-board" class="sub-dropdown-trigger">Advisory Board <i class="fas fa-chevron-right sub-arrow"></i></a>
+                            <ul class="sub-dropdown-menu">
+                                <li><a href="committee.html#international-advisory">International Advisory</a></li>
+                                <li><a href="committee.html#national-advisory">National Advisory</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="committee.html#technical-advisor">Technical Program Advisor</a></li>
+                    </ul>
+                </li>
+
+
                 <li><a href="speaker.html">Speakers</a></li>
                 <li><a href="awards.html">Awards</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
@@ -51,10 +76,27 @@
     <main class="sessions-main">
         <div class="container">
             <section class="about-sessions">
-                <h2 class="section-title">Publication and Indexing</h2>
-                <div class="about-content">
-                    <p>Describe the publication details here, such as proceedings publisher, indexing information, and special issues.</p>
-                </div>
+                <h2 class="section-title">Publication & Indexing</h2>
+                <!-- <div class="about-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; margin-top: 30px;"> -->
+                    <!-- Publisher Logo Box -->
+                    <!-- <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;">
+                        <div style="background: var(--white); padding: 40px; border-radius: 12px; border: 1px solid var(--grey-medium); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05); display: flex; align-items: center; justify-content: center; width: 100%; max-width: 350px; min-height: 160px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <img src="img/publisher.png" alt="Official Publisher Logo" style="max-width: 100%; max-height: 120px; object-fit: contain; display: block;">
+                        </div>
+                        <span style="font-size: 14px; font-weight: 600; color: var(--text-dark); text-transform: uppercase; letter-spacing: 1px;">Official Proceedings Publisher</span>
+                    </div> -->
+                    <h1 style="text-align: center;">Coming Soon</h1>
+                    <!-- Indexing Information -->
+                    <!-- <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <h3 style="color: var(--nav-purple); font-size: 22px; font-weight: 700; margin-bottom: 5px;">Conference Proceedings</h3>
+                        <p style="color: var(--text-light); line-height: 1.8; font-size: 15px; text-align: justify; margin: 0;">
+                            All accepted, registered, and presented papers of the conference will be published in the peer-reviewed conference proceedings. 
+                        </p>
+                        <p style="color: var(--text-light); line-height: 1.8; font-size: 15px; text-align: justify; margin: 0;">
+                            The publication is scheduled to be submitted for indexing in major global scientific databases including <strong>Scopus</strong>, <strong>Google Scholar</strong>, <strong>INSPEC</strong>, and <strong>Web of Science (WoS)</strong>, ensuring wide dissemination, global citation, and academic impact for our authors.
+                        </p>
+                    </div>
+                </div> -->
             </section>
         </div>
     </main>

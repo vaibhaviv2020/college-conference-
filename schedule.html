@@ -23,11 +23,36 @@
                 </button>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="cfp.html">Call For Paper</a></li>
+                    <li class="nav-dropdown">
+                        <a href="cfp.html" class="dropdown-trigger">Call For Paper <i class="fas fa-chevron-down nav-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="cfp.html#cfp">About Conference</a></li>
+                            <li><a href="cfp.html#review-process">Peer Review Process</a></li>
+                            <li><a href="cfp.html#tracks">Conference Tracks</a></li>
+                            <li><a href="cfp.html#important-dates">Important Dates</a></li>
+                            <li><a href="cfp.html#submission">Submission Guidelines</a></li>
+                        </ul>
+                    </li>
                     <li><a href="sessions.html">Special Sessions</a></li>
                     <li><a href="schedule.html">Program Schedule</a></li>
                     <li><a href="publication.html">Publication</a></li>
-                    <li><a href="committee.html">Committees</a></li>
+                    <li class="nav-dropdown">
+                        <a href="committee.html" class="dropdown-trigger">Committees <i class="fas fa-chevron-down nav-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="committee.html#chief-patron">Chief Patron</a></li>
+                            <li><a href="committee.html#organizing-committee">Organizing Committee</a></li>
+                            <li class="nav-sub-dropdown">
+                                <a href="committee.html#advisory-board" class="sub-dropdown-trigger">Advisory Board <i class="fas fa-chevron-right sub-arrow"></i></a>
+                                <ul class="sub-dropdown-menu">
+                                    <li><a href="committee.html#international-advisory">International Advisory</a></li>
+                                    <li><a href="committee.html#national-advisory">National Advisory</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="committee.html#technical-advisor">Technical Program Advisor</a></li>
+                        </ul>
+                    </li>
+
+
                     <li><a href="speaker.html">Speakers</a></li>
                     <li><a href="awards.html">Awards</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
@@ -52,12 +77,46 @@
    
 
     <!-- Main Content -->
-    <main class="schedule-main">
-        <div class="container schedule-container">
-            <h2 class="schedule-item">Final Program Schedule of EAMCON 2026&mdash; Will be available soon</h2>
-            <h2 class="schedule-item">Presentation Template of EAMCON 2026&mdash; Will be available soon</h2>
-            <h2 class="schedule-item">Route Guidance to Venue of EAMCON 2026 (for offline participants) &mdash; Will be
-                available soon</h2>
+    <main class="schedule-main" style="padding: 60px 0;">
+        <div class="container">
+            <!-- Important Dates Table -->
+            <div class="dates-table-container">
+                <h2 class="dates-table-title"><i class="fas fa-calendar-days"></i> Important Dates</h2>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Call for Papers</td>
+                            <td>31<sup>th</sup> Oct, 2026</td>
+                        </tr>
+                        <tr>
+                            <td>Paper Submission Deadline</td>
+                            <td>31<sup>st</sup> Jan, 2026</td>
+                        </tr>
+                        <tr>
+                            <td>Acceptance Notification</td>
+                            <td>2<sup>nd</sup> March, 2027</td>
+                        </tr>
+                        <tr>
+                            <td>Registration Deadline</td>
+                            <td>15<sup>th</sup> March, 2027</td>
+                        </tr>
+                        <tr>
+                            <td>Camera-Ready Paper</td>
+                            <td>20<sup>th</sup> March, 2027</td>
+                        </tr>
+                        <tr>
+                            <td>Conference Dates</td>
+                            <td>9<sup>th</sup> - 10<sup>th</sup> April 2027</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
 

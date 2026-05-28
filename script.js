@@ -338,4 +338,144 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    // Committee Page Tab Switching
+    const committeeTabs = document.querySelectorAll('.committee-tab-btn');
+    const committeePanels = document.querySelectorAll('.committee-tab-panel');
+
+    function switchCommitteeTab(targetId) {
+        if (!targetId) return;
+        
+        let actualTabId = targetId;
+        let scrollToSection = null;
+        
+        // Map sub-advisory board sections to the main Advisory Board tab
+        if (targetId === 'international-advisory' || targetId === 'national-advisory') {
+            actualTabId = 'advisory-board';
+            scrollToSection = targetId;
+        }
+        
+        let found = false;
+        committeeTabs.forEach(tab => {
+            if (tab.getAttribute('data-target') === actualTabId) {
+                tab.classList.add('active');
+                found = true;
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+
+        if (found) {
+            committeePanels.forEach(panel => {
+                if (panel.getAttribute('id') === actualTabId) {
+                    panel.classList.add('active');
+                } else {
+                    panel.classList.remove('active');
+                }
+            });
+            
+            // If we need to scroll to a specific section, do it smoothly
+            if (scrollToSection) {
+                setTimeout(() => {
+                    const sectionEl = document.getElementById(scrollToSection);
+                    if (sectionEl) {
+                        sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 150);
+            }
+            
+            // Update URL hash without scrolling the page automatically
+            if (window.location.hash !== '#' + targetId) {
+                history.replaceState(null, null, '#' + targetId);
+            }
+        }
+    }
+
+    if (committeeTabs.length > 0 && committeePanels.length > 0) {
+        committeeTabs.forEach(tab => {
+            tab.addEventListener('click', function () {
+                const targetId = this.getAttribute('data-target');
+                switchCommitteeTab(targetId);
+            });
+        });
+
+        // Initialize from URL Hash on page load
+        const handleHashChange = function () {
+            const currentHash = window.location.hash.substring(1); // remove '#'
+            if (currentHash) {
+                switchCommitteeTab(currentHash);
+            }
+        };
+
+        // Run on load and hashchange
+        window.addEventListener('load', handleHashChange);
+        window.addEventListener('hashchange', handleHashChange);
+        
+        // Immediate trigger if load has already completed
+        handleHashChange();
+    }
+
+    // Intercept dropdown menu clicks when already on the targeted page
+    const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
+    dropdownLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href.includes('committee.html#')) {
+                const targetId = href.split('#')[1];
+                const isCommitteePage = window.location.pathname.endsWith('committee.html') || 
+                                        window.location.pathname.endsWith('committee') ||
+                                        window.location.pathname === '/' && href.includes('committee.html#'); // local dev check
+                
+                // If already on committee page, switch tab immediately
+                if (isCommitteePage || document.querySelector('.committee-tabs-nav')) {
+                    e.preventDefault();
+                    switchCommitteeTab(targetId);
+                    
+                    // Only scroll to tabs navigation if not specifically targeting sub-sections
+                    if (targetId !== 'international-advisory' && targetId !== 'national-advisory') {
+                        const tabsNav = document.querySelector('.committee-tabs-nav');
+                        if (tabsNav) {
+                            tabsNav.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+
+                    // Close mobile menu if active
+                    if (navMenu && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        if (mobileMenuToggle) {
+                            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                }
+            } else if (href.includes('cfp.html#')) {
+                const targetId = href.split('#')[1];
+                const isCfpPage = window.location.pathname.endsWith('cfp.html') || 
+                                  window.location.pathname.endsWith('cfp') ||
+                                  window.location.pathname === '/' && href.includes('cfp.html#'); // local dev check
+                
+                // If already on cfp page, smooth scroll to the target element immediately
+                if (isCfpPage || document.querySelector('.cfp-main')) {
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        
+                        // Update URL hash without reload
+                        if (window.location.hash !== '#' + targetId) {
+                            history.replaceState(null, null, '#' + targetId);
+                        }
+
+                        // Close mobile menu if active
+                        if (navMenu && navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            if (mobileMenuToggle) {
+                                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
 });
+
