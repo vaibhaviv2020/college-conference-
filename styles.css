@@ -2724,8 +2724,8 @@ s .gallery-section {
 /* Form Styles */
 .contact-layout {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
+    /* grid-template-columns: 1fr 2fr;
+    gap: 40px; */
     margin-top: 20px;
 }
 
