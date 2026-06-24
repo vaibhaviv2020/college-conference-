@@ -1,20 +1,288 @@
-<h1>Admin Dashboard</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - VISTA 2027 | Bharti Vidyapeeth College of Engineering Pune</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body id="dashboardBody">
 
-<h2>Add Speaker</h2>
+    <!-- Top Navbar -->
+    <header class="dashboard-navbar">
+        <div class="navbar-brand">
+            <img src="../img/clg logo.png" alt="Bharti Vidyapeeth Logo" class="navbar-logo">
+            <h1 class="navbar-title">VISTA 2027 <span>Admin Dashboard</span></h1>
+        </div>
+        <div class="navbar-actions">
+            <div class="admin-profile">
+                <div id="adminProfileAvatar" class="admin-avatar">A</div>
+                <div class="admin-info">
+                    <span id="adminProfileName" class="admin-name">Admin</span>
+                    <span class="admin-role">System Administrator</span>
+                </div>
+            </div>
+            <button id="logoutBtn" class="btn-logout" aria-label="Log out">
+                <i class="fas fa-right-from-bracket"></i>
+                <span>Log Out</span>
+            </button>
+        </div>
+    </header>
 
-<input id="speakerName" placeholder="Speaker Name">
-<br><br>
+    <!-- Dashboard Wrapper -->
+    <div class="dashboard-wrapper">
+        <!-- Sidebar Navigation -->
+        <nav class="dashboard-sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active" data-target="speakersSection">
+                    <a href="#">
+                        <i class="fas fa-users"></i>
+                        <span>Manage Speakers</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" data-target="activitySection">
+                    <a href="#">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Activity Log</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" data-target="settingsSection">
+                    <a href="#">
+                        <i class="fas fa-sliders"></i>
+                        <span>General Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-<input id="speakerTitle" placeholder="Speaker Title">
-<br><br>
+        <!-- Dashboard Content Area -->
+        <main class="dashboard-content">
+            
+            <!-- Dashboard Overview Cards -->
+            <section class="overview-grid">
+                <!-- Card 1: Total Speakers -->
+                <div class="overview-card">
+                    <div class="card-info">
+                        <h3>Total Speakers</h3>
+                        <div id="statTotalSpeakers" class="card-value">-</div>
+                    </div>
+                    <div class="card-icon blue">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
 
-<textarea id="speakerBio" placeholder="Speaker Bio"></textarea>
-<br><br>
+                <!-- Card 2: Total Updates -->
+                <div class="overview-card">
+                    <div class="card-info">
+                        <h3>Total Edits</h3>
+                        <div id="statTotalUpdates" class="card-value">14</div>
+                    </div>
+                    <div class="card-icon orange">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                </div>
 
-<button id="saveSpeaker">
-    Save Speaker
-</button>
+                <!-- Card 3: Active Pages -->
+                <div class="overview-card">
+                    <div class="card-info">
+                        <h3>Active Pages</h3>
+                        <div id="statActivePages" class="card-value">12</div>
+                    </div>
+                    <div class="card-icon yellow">
+                        <i class="fas fa-file-lines"></i>
+                    </div>
+                </div>
 
-<div id="message"></div>
+                <!-- Card 4: Recent Changes -->
+                <div class="overview-card">
+                    <div class="card-info">
+                        <h3>Recent Actions</h3>
+                        <div id="statRecentChanges" class="card-value">-</div>
+                    </div>
+                    <div class="card-icon green">
+                        <i class="fas fa-clock-rotate-left"></i>
+                    </div>
+                </div>
+            </section>
 
-<script type="module" src="dashboard.js"></script>
+            <!-- ==========================================
+                 Manage Speakers Panel Section
+                 ========================================== -->
+            <section id="speakersSection" class="panel-section">
+                <div class="content-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-tie"></i> Conference Speakers Directory</h3>
+                    </div>
+
+                    <!-- Search & Filter Controls -->
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <i class="fas fa-magnifying-glass"></i>
+                            <input type="text" id="searchSpeaker" class="search-input" placeholder="Search by name, title, or biography...">
+                        </div>
+                        <select id="filterTrack" class="filter-select">
+                            <option value="all">All Tracks / Roles</option>
+                            <option value="keynote">Keynote Speaker</option>
+                            <option value="session">Session Chair</option>
+                            <option value="guest">Guest Speaker</option>
+                        </select>
+                        <button id="btnAddSpeaker" class="btn-add">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Add New Speaker</span>
+                        </button>
+                    </div>
+
+                    <!-- Speakers Data Table -->
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 30%;">Speaker Profile</th>
+                                    <th style="width: 50%;">Biography</th>
+                                    <th style="width: 20%;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="speakersTableBody">
+                                <!-- Loaded dynamically via Firestore snapshot -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 Activity Log Panel Section
+                 ========================================== -->
+            <section id="activitySection" class="panel-section" style="display: none;">
+                <div class="activity-panel">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list-check"></i> Recent Admin Audit Logs</h3>
+                    </div>
+                    <ul id="activityTimeline" class="timeline">
+                        <!-- Loaded dynamically from localStorage/session activity -->
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 General Settings Panel Section
+                 ========================================== -->
+            <section id="settingsSection" class="panel-section" style="display: none;">
+                <div class="settings-panel">
+                    <div class="card-header">
+                        <h3><i class="fas fa-gear"></i> Website Configuration</h3>
+                    </div>
+                    <form id="settingsForm" class="custom-form">
+                        <div class="form-group">
+                            <label for="siteTitle" class="form-label">Conference Acronym</label>
+                            <input type="text" id="siteTitle" class="form-input" placeholder="VISTA 2027">
+                        </div>
+                        <div class="form-group">
+                            <label for="siteEmail" class="form-label">Contact Email Address</label>
+                            <input type="email" id="siteEmail" class="form-input" placeholder="hvmhetre@bvucoep.edu.in">
+                        </div>
+                        <div class="form-group">
+                            <label for="siteVenue" class="form-label">Physical Venue Details</label>
+                            <textarea id="siteVenue" class="form-textarea" placeholder="Bharti Vidyapeeth College of Engineering Pune, Satara Road, Pune - 411043, India."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Theme Accent Options</label>
+                            <div style="display: flex; gap: 15px; margin-top: 5px;">
+                                <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 14px;">
+                                    <input type="radio" name="accent" checked style="accent-color: var(--orange);"> Standard Orange
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 14px;">
+                                    <input type="radio" name="accent" style="accent-color: var(--yellow);"> Highlight Yellow
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-save-settings">
+                            <i class="fas fa-floppy-disk"></i> Save Configurations
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ==========================================================================
+         Modals Overlay Sections
+         ========================================================================== -->
+
+    <!-- Speaker Form Modal (Add / Edit) -->
+    <div id="speakerModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h4 id="modalTitle">Add Speaker</h4>
+                <button class="btn-close-modal" aria-label="Close modal">
+                    <i class="fas fa-xmark"></i>
+                </button>
+            </div>
+            <form id="speakerForm">
+                <div class="modal-body">
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="speakerName" class="form-label">Full Name *</label>
+                        <input type="text" id="speakerName" class="form-input" placeholder="Dr. John Doe" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="speakerTitle" class="form-label">Professional Designation / Title *</label>
+                        <input type="text" id="speakerTitle" class="form-input" placeholder="Professor, MIT Dept. of Mechanical Eng." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="speakerBio" class="form-label">Short Biography *</label>
+                        <textarea id="speakerBio" class="form-textarea" placeholder="Enter speaker educational background, research focus area, and achievements..." required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary btn-cancel">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Speaker</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteConfirmModal" class="modal-overlay">
+        <div class="modal-box confirm-box">
+            <div class="modal-body" style="padding: 30px 24px 20px;">
+                <div class="confirm-icon">
+                    <i class="fas fa-triangle-exclamation"></i>
+                </div>
+                <h4>Delete Speaker Profile?</h4>
+                <p>Are you sure you want to delete <strong id="deleteSpeakerName">this speaker</strong>? This action will permanently remove their profile card from the website and cannot be undone.</p>
+                <div style="display: flex; gap: 12px; justify-content: center;">
+                    <button type="button" class="btn-secondary btn-cancel">Cancel</button>
+                    <button type="button" id="btnConfirmDelete" class="btn-primary" style="background-color: var(--danger);">Yes, Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Speaker Card Preview Modal -->
+    <div id="previewModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header" style="background: var(--nav-purple);">
+                <h4>Live Card Preview</h4>
+                <button class="btn-close-modal" aria-label="Close modal">
+                    <i class="fas fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="speakerPreviewContainer">
+                    <!-- Preview content loaded dynamically -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary btn-close-modal">Close Preview</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
