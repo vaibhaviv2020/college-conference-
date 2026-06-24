@@ -76,12 +76,18 @@
 
 
     <!-- Main Content -->
-    <main class="speakers-main" style="display: flex; align-items: center; justify-content: center; min-height: 40vh; padding: 40px 0;">
-        <h1 style="text-align: center; margin: 0; color: var(--text-dark); font-family: 'Times New Roman', Times, serif;">To Be Announced</h1>
+    <main class="speakers-main" style="min-height: 50vh; padding: 60px 0;">
+        <div class="container">
+            <div id="speakerStatus" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 30vh;">
+                <i class="fas fa-microphone-lines" style="font-size: 48px; color: var(--orange); margin-bottom: 20px;"></i>
+                <h1 style="margin: 0; color: var(--text-dark); font-family: 'Times New Roman', Times, serif; font-size: 28px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">To Be Announced</h1>
+                <p style="color: var(--text-light); margin-top: 10px; font-size: 15px;">Speakers and keynote details will be updated soon. Stay tuned!</p>
+            </div>
+            <div id="speakerList" class="keynote-grid" style="display: none; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px;"></div>
+        </div>
     </main>
 
-    <div id="speakerList"></div>
-        <script src="script.js"></script>
+    <script src="script.js"></script>
 
     <!-- Footer -->
     <footer class="footer">
