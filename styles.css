@@ -751,7 +751,7 @@ a {
     margin: 0;
 }
 
-s .gallery-section {
+.gallery-section {
     background: var(--white);
     padding: 60px 0;
 }
@@ -776,14 +776,14 @@ s .gallery-section {
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
-    margin: -350px;
+    transition: color 0.3s ease;
 }
 
 .view-all-link:hover {
     text-decoration: underline;
 }
 
-.gallery-grid {
+.gallery-section .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -791,7 +791,7 @@ s .gallery-section {
     margin: 0 auto;
 }
 
-.gallery-item {
+.gallery-section .gallery-item {
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
@@ -799,7 +799,7 @@ s .gallery-section {
     height: 250px;
 }
 
-.gallery-item:hover {
+.gallery-section .gallery-item:hover {
     transform: scale(1.05);
 }
 
@@ -829,7 +829,7 @@ s .gallery-section {
     transition: transform 0.3s ease;
 }
 
-.gallery-item:hover .gallery-placeholder i {
+.gallery-section .gallery-item:hover .gallery-placeholder i {
     transform: scale(1.1) rotate(5deg);
 }
 
@@ -1260,6 +1260,50 @@ s .gallery-section {
     font-size: 18px;
 }
 
+.publication-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--grey-medium);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1500px;
+    min-height: 160px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+.publication-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.swipe-indicator {
+    display: none;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--orange);
+    margin-bottom: 12px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--grey-light);
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px dashed var(--grey-medium);
+}
+@media (max-width: 900px) {
+    .swipe-indicator {
+        display: inline-flex;
+    }
+}
+
 @media (max-width: 900px) {
     .sessions-layout {
         grid-template-columns: 1fr;
@@ -1272,6 +1316,9 @@ s .gallery-section {
 
     .session-tab {
         flex: 1 1 100%;
+        aspect-ratio: auto;
+        height: auto;
+        max-width: 100%;
     }
 }
 
@@ -1283,6 +1330,10 @@ s .gallery-section {
 
     .nav-wrapper {
         min-height: 84px;
+    }
+
+    .logo {
+        height: 60px;
     }
 
     .global-participants .container {
@@ -1346,9 +1397,20 @@ s .gallery-section {
     }
 
     .nav-dropdown:hover .dropdown-menu {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        transform: none;
+    }
+
+    .nav-dropdown.active .dropdown-menu {
+        display: block;
         opacity: 1;
         visibility: visible;
-        transform: none;
+    }
+
+    .nav-dropdown.active .nav-arrow {
+        transform: rotate(180deg);
     }
 
     .dropdown-menu {
@@ -1358,9 +1420,9 @@ s .gallery-section {
         background: rgba(0, 0, 0, 0.15);
         box-shadow: none;
         border-radius: 0;
-        opacity: 1;
-        visibility: visible;
-        display: block;
+        opacity: 0;
+        visibility: hidden;
+        display: none;
         padding: 5px 0;
         border: none;
         margin: 0;
@@ -1402,9 +1464,20 @@ s .gallery-section {
     }
 
     .nav-sub-dropdown:hover .sub-dropdown-menu {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        transform: none;
+    }
+
+    .nav-sub-dropdown.active .sub-dropdown-menu {
+        display: block;
         opacity: 1;
         visibility: visible;
-        transform: none;
+    }
+
+    .nav-sub-dropdown.active .sub-arrow {
+        transform: rotate(90deg);
     }
 
     .sub-dropdown-menu {
@@ -1414,9 +1487,9 @@ s .gallery-section {
         background: rgba(0, 0, 0, 0.1);
         box-shadow: none;
         border-radius: 0;
-        opacity: 1;
-        visibility: visible;
-        display: block;
+        opacity: 0;
+        visibility: hidden;
+        display: none;
         padding: 5px 0;
         border: none;
         margin: 0;
@@ -1453,12 +1526,21 @@ s .gallery-section {
         font-size: 32px;
     }
 
-    .hero-main-title {
-        font-size: 24px;
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .hero-main-title,
+    .hero-content h3 {
+        font-size: 22px;
     }
 
     .hero-date {
-        font-size: 20px;
+        font-size: 18px;
+    }
+
+    .hero-venue {
+        font-size: 14px;
     }
 
     .section-title {
@@ -1469,7 +1551,7 @@ s .gallery-section {
         display: none;
     }
 
-    .gallery-grid {
+    .gallery-section .gallery-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1513,6 +1595,222 @@ s .gallery-section {
         width: 100px;
         height: 100px;
     }
+
+    /* Card padding and text alignment overrides for mobile readability */
+    .about-card,
+    .about-conference-card,
+    .scope-card,
+    .venue-card,
+    .custom-form,
+    .session-details,
+    .publication-card {
+        padding: 20px !important;
+    }
+
+    .publication-card {
+        min-height: auto !important;
+    }
+
+    .board-member-card {
+        padding: 15px !important;
+    }
+
+    .welcome-content,
+    .about-card-text,
+    .about-conference-text,
+    .cfp-section p,
+    .cfp-list li {
+        text-align: left !important;
+    }
+
+    /* Horizontal committee profile cards on mobile to reduce vertical whitespace */
+    .committee-card {
+        flex-direction: row !important;
+        text-align: left !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 15px !important;
+        padding: 15px 20px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .committee-grid.centered .committee-card {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .committee-card-icon {
+        margin-bottom: 0 !important;
+        flex-shrink: 0 !important;
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 22px !important;
+    }
+
+    .member-info {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+
+    .member-name {
+        font-size: 16px !important;
+        margin-bottom: 4px !important;
+        text-align: left !important;
+    }
+
+    .member-role {
+        font-size: 12px !important;
+        margin-bottom: 4px !important;
+        text-align: left !important;
+        line-height: 1.3 !important;
+        color: var(--orange) !important;
+        font-weight: 600 !important;
+    }
+
+    .member-org {
+        font-size: 12px !important;
+        text-align: left !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Clean up registration tables for mobile screens to fit page width */
+    .reg-table {
+        min-width: auto !important;
+        width: 100% !important;
+        table-layout: fixed !important;
+    }
+
+    .reg-table th, 
+    .reg-table td {
+        padding: 8px 6px !important;
+        font-size: 12px !important;
+        line-height: 1.3 !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .reg-table th:nth-child(1),
+    .reg-table td:nth-child(1) {
+        width: 50% !important;
+        text-align: left !important;
+    }
+    .reg-table th:nth-child(2),
+    .reg-table td:nth-child(2),
+    .reg-table th:nth-child(3),
+    .reg-table td:nth-child(3) {
+        width: 25% !important;
+    }
+
+    .registration-main .swipe-indicator {
+        display: none !important;
+    }
+
+    /* Compact home page fees table on mobile */
+    .fees-table {
+        min-width: 650px !important;
+    }
+
+    .fees-table th, 
+    .fees-table td {
+        padding: 6px 8px !important;
+        font-size: 11.5px !important;
+        line-height: 1.2 !important;
+    }
+
+    .fees-table td.category-header {
+        font-size: 13px !important;
+        padding: 6px !important;
+    }
+
+    .fees-table td.row-label {
+        width: 150px !important;
+        font-size: 11.5px !important;
+    }
+
+    /* Rework tracks tabs for mobile into horizontal swipe tag pills */
+    .tracks-v-tabs {
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        width: 100% !important;
+        gap: 10px !important;
+        padding: 5px 0 15px 0 !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    .tracks-v-tabs::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .track-v-tab {
+        min-height: auto !important;
+        width: auto !important;
+        flex: 0 0 auto !important;
+        padding: 8px 16px !important;
+        border-radius: 30px !important;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important;
+        border: 1px solid var(--grey-medium) !important;
+        min-width: auto !important;
+    }
+
+    .track-v-tab-content {
+        font-size: 12.5px !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+        text-align: center !important;
+    }
+
+    .track-v-tab-content strong {
+        font-size: 13px !important;
+        margin-bottom: 0 !important;
+        display: inline !important;
+    }
+
+    .track-v-tab-content br {
+        display: none !important;
+    }
+
+    .tracks-v-panels {
+        padding: 20px !important;
+        margin-top: 10px !important;
+    }
+
+    .track-panel-title {
+        font-size: 18px !important;
+        line-height: 1.3 !important;
+    }
+
+    .track-panel-subtitle {
+        font-size: 13.5px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .track-sub-section ul li {
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Reduce vertical padding globally for mobile screens */
+    .about-section,
+    .global-participants,
+    .previous-proceedings,
+    .gallery-section,
+    .partners-section,
+    .sdg-section,
+    .sessions-main,
+    .cfp-main,
+    .registration-main,
+    .contact-main {
+        padding: 30px 0 !important;
+    }
+
+    .section-title {
+        margin-bottom: 25px !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1536,12 +1834,25 @@ s .gallery-section {
         font-size: 24px;
     }
 
-    .hero-main-title {
-        font-size: 18px;
+    .hero-subtitle {
+        font-size: 14px;
+    }
+
+    .hero-main-title,
+    .hero-content h3 {
+        font-size: 16px;
+    }
+
+    .hero-date {
+        font-size: 15px;
+    }
+
+    .hero-venue {
+        font-size: 12px;
     }
 
     .logo {
-        height: 40px;
+        height: 45px;
     }
 
     .logo-text {
@@ -1554,6 +1865,21 @@ s .gallery-section {
 
     .info-banner p {
         font-size: 10px;
+    }
+
+    /* Vertical stack for payment/registration buttons on small mobile screens */
+    .action-buttons {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+        margin-top: 15px !important;
+    }
+    
+    .pay-btn, 
+    .form-btn {
+        width: 100% !important;
+        justify-content: center !important;
+        text-align: center !important;
     }
 }
 
@@ -1977,14 +2303,14 @@ s .gallery-section {
     /* Dark purple/grey colour from image */
     color: var(--white);
     padding: 12px 60px;
-    margin: 0px 430px;
     border: none;
     border-radius: 4px;
     font-size: 16px;
     font-family: inherit;
     cursor: pointer;
     font-weight: 500;
-    margin-top: 30px;
+    margin: 30px auto 0 auto;
+    display: block;
     transition: background-color 0.3s ease;
     align-content: center;
 }
@@ -2211,7 +2537,9 @@ s .gallery-section {
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
 }
 
 .keynote-img {
@@ -2393,13 +2721,13 @@ s .gallery-section {
     /* Space for the arrows */
 }
 
-.gallery-grid {
+.gallery-main .gallery-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
-.gallery-item {
+.gallery-main .gallery-item {
     position: relative;
     border-radius: 12px;
     overflow: hidden;
@@ -2408,7 +2736,7 @@ s .gallery-section {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.gallery-img {
+.gallery-main .gallery-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -2416,7 +2744,7 @@ s .gallery-section {
     transition: transform 0.3s ease;
 }
 
-.gallery-img:hover {
+.gallery-main .gallery-img:hover {
     transform: scale(1.05);
     /* Slight zoom on hover */
 }
@@ -2455,7 +2783,7 @@ s .gallery-section {
 }
 
 @media (max-width: 992px) {
-    .gallery-grid {
+    .gallery-main .gallery-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
@@ -2465,7 +2793,7 @@ s .gallery-section {
         padding: 0 20px;
     }
 
-    .gallery-grid {
+    .gallery-main .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -2482,7 +2810,7 @@ s .gallery-section {
 }
 
 @media (max-width: 480px) {
-    .gallery-grid {
+    .gallery-main .gallery-grid {
         grid-template-columns: 1fr;
     }
 }
@@ -2847,7 +3175,11 @@ s .gallery-section {
 @media (max-width: 600px) {
     .form-row {
         flex-direction: column;
-        gap: 0;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+    .form-row .form-group {
+        margin-bottom: 0;
     }
 }
 
@@ -3244,7 +3576,7 @@ s .gallery-section {
 
 .board-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 20px;
 }
 
@@ -3341,6 +3673,8 @@ s .gallery-section {
     margin-bottom: 40px;
     border-top: 4px solid var(--orange);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .dates-table-container:hover {
@@ -3438,6 +3772,7 @@ s .gallery-section {
 
 .table-responsive {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     margin: 20px 0;
 }
 
@@ -3748,6 +4083,188 @@ s .gallery-section {
     }
 }
 
+/* Global scroll offset to prevent sticky header covering anchors */
+html {
+    scroll-padding-top: 100px;
+}
 
+/* Premium Mobile Responsiveness & UX Redesign Overrides */
+@media (max-width: 768px) {
+    /* Global layout overflow prevention */
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
 
+    /* Page Header Typography Hierarchy Redesign */
+    .sessions-header h1,
+    .cfp-header-content h1 {
+        font-size: 26px !important;
+        font-weight: 700 !important;
+        line-height: 1.3 !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    .sessions-header {
+        padding: 25px 15px 15px 15px !important;
+    }
 
+    /* Table Container Safety Net to Prevent Layout Breaking */
+    .table-responsive,
+    .dates-table-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* Compact Special Sessions Tab Buttons */
+    .session-tab {
+        padding: 12px 16px !important;
+        font-size: 13.5px !important;
+    }
+
+    /* Premium mobile navigation menu borders and separators */
+    .nav-menu {
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+    
+    .nav-menu li:not(:last-child) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* Home page gallery glimpses layout optimization to prevent overlap */
+    .gallery-header .container {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .gallery-header .view-all-link {
+        position: static !important;
+        margin-top: 5px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+    }
+
+    /* Stacking Payment & Form Action Buttons to Prevent Horizontal Scroll */
+    .action-buttons {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    .action-buttons .pay-btn,
+    .action-buttons .form-btn {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 12px 20px !important;
+        font-size: 14.5px !important;
+    }
+
+    /* Compact and Elegant Policy Tabs Grid */
+    .policy-tabs {
+        gap: 10px !important;
+    }
+
+    .policy-tab {
+        flex: 1 1 calc(50% - 5px) !important;
+        text-align: center !important;
+        padding: 10px 12px !important;
+        font-size: 13px !important;
+    }
+
+    /* CFP Page Specific Premium Responsive Overrides */
+    .cfp-main {
+        padding: 30px 15px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Redesign CFP Navigation Links into Premium Scrollable Pill Tags */
+    .cfp-tabs {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        width: 100% !important;
+        gap: 12px !important;
+        padding: 10px 15px !important;
+        margin: 15px auto !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        -webkit-overflow-scrolling: touch !important;
+        background: var(--grey-light) !important;
+        border-radius: 30px !important;
+    }
+    
+    .cfp-tabs::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .cfp-tabs a {
+        padding: 8px 16px !important;
+        background: var(--white) !important;
+        border: 1px solid var(--grey-medium) !important;
+        border-radius: 20px !important;
+        font-size: 13px !important;
+        white-space: nowrap !important;
+        color: var(--text-dark) !important;
+        display: inline-block !important;
+        text-align: center !important;
+        padding-top: 8px !important; /* Override desktop padding-top */
+    }
+
+    .cfp-tabs a:hover,
+    .cfp-tabs a.active {
+        background: var(--nav-purple) !important;
+        color: var(--white) !important;
+        border-color: var(--nav-purple) !important;
+    }
+
+    /* Constrain Tracks layout to prevent page stretching */
+    .tracks-vertical-layout,
+    .tracks-v-panels {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .tracks-v-tabs {
+        flex-wrap: nowrap !important;
+    }
+
+    /* Constrain Important Dates table to prevent horizontal page overflow */
+    .dates-table-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 20px 15px !important;
+        border-radius: 8px !important;
+    }
+
+    .schedule-table {
+        width: 100% !important;
+        min-width: 460px !important; /* Allow scroll on small viewports while preserving readability */
+        table-layout: auto !important;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+        padding: 10px 12px !important;
+        font-size: 13.5px !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    /* Adjust Review Process card padding for more readable width */
+    #review-process {
+        padding: 20px 15px !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+    }
+}

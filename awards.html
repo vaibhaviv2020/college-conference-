@@ -64,12 +64,47 @@
     </header>
 
     <!-- Main Content -->
-    <main class="sessions-main">
+    <main class="sessions-main" style="padding: 60px 0;">
         <div class="container">
-            <section class="about-sessions">
-                <h2 class="section-title">Best Paper and Special Awards</h2>
-                <div class="about-content">
-                    <p>Provide information about best paper awards, student awards, and any other recognitions here.</p>
+            <section class="about-sessions" style="margin-bottom: 40px;">
+                <h2 class="section-title" style="margin-bottom: 15px;">Awards & Recognition</h2>
+                <p style="text-align: center; color: var(--text-light); max-width: 700px; margin: 0 auto 50px auto; font-size: 16px; line-height: 1.6;">
+                    To honor outstanding research, motivate scholarly excellence, and recognize outstanding presentations, the conference committee will present the following awards during the closing ceremony.
+                </p>
+                
+                <div class="keynote-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                    <!-- Best Paper Card -->
+                    <div class="keynote-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 35px 25px; height: 100%;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(253, 157, 36, 0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                            <i class="fas fa-trophy" style="font-size: 32px; color: var(--yellow);"></i>
+                        </div>
+                        <h3 class="keynote-name" style="font-size: 18px; margin-bottom: 12px; color: var(--nav-dark);">Best Paper Award</h3>
+                        <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin: 0;">
+                            Awarded to the most outstanding research paper submitted to the regular tracks. Evaluation is based on reviewers' scores, technical depth, originality, and impact.
+                        </p>
+                    </div>
+
+                    <!-- Best Student Paper Card -->
+                    <div class="keynote-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 35px 25px; height: 100%;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(229, 90, 43, 0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                            <i class="fas fa-graduation-cap" style="font-size: 32px; color: var(--orange);"></i>
+                        </div>
+                        <h3 class="keynote-name" style="font-size: 18px; margin-bottom: 12px; color: var(--nav-dark);">Best Student Paper</h3>
+                        <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin: 0;">
+                            Presented to the best paper where the primary author and presenter is a full-time student. Designed to encourage and support young researchers entering the field.
+                        </p>
+                    </div>
+
+                    <!-- Best Presentation Card -->
+                    <div class="keynote-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 35px 25px; height: 100%;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(45, 45, 95, 0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                            <i class="fas fa-chalkboard-user" style="font-size: 32px; color: var(--nav-purple);"></i>
+                        </div>
+                        <h3 class="keynote-name" style="font-size: 18px; margin-bottom: 12px; color: var(--nav-dark);">Best Presentation</h3>
+                        <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin: 0;">
+                            Awarded to the presenter with the most engaging, clear, and structured presentation in each technical track session, as evaluated by session chairs.
+                        </p>
+                    </div>
                 </div>
             </section>
         </div>
@@ -99,8 +134,4 @@
 
     <script src="script.js"></script>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 1f16357dd0c71d57e2fee9c351b4013535a6b20b
